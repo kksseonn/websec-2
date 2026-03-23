@@ -8,7 +8,8 @@ export function getSettlements(req, res) {
 
 export function getSettlementsBySearch(req, res) {
   const query = req.query.q?.trim() || "";
-  const results = searchSettlements(query);
+  const type = req.query.type?.trim() || "name";
+  const results = searchSettlements(query, type);
 
   res.json(results);
 }
