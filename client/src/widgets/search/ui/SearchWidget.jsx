@@ -18,8 +18,8 @@ export function SearchWidget({ onSelect }) {
 	}
 
 	return (
-		<div className="relative flex justify-end">
-			<div className="w-full max-w-sm">
+		<div className="flex justify-end">
+			<div className="relative w-full max-w-sm">
 				<div className="flex h-11 items-center rounded-full border border-slate-300 bg-white px-4 shadow-sm">
 					<input
 						type="text"
