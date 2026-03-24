@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { ForecastWidget } from '@/widgets/forecast'
 import { SearchWidget } from '@/widgets/search'
 
 export function HomePage() {
 	const [selectedSettlement, setSelectedSettlement] = useState(null)
 
 	return (
-		<div className="mx-auto flex max-w-5xl flex-col gap-6 p-6">
+		<div className="mx-auto flex max-w-7xl flex-col gap-6 p-6">
 			<h1 className="text-left text-2xl font-semibold">Прогноз погоды</h1>
 
 			<p className="text-left">
@@ -18,14 +19,13 @@ export function HomePage() {
 				<span className="text-blue-500">карта</span>
 			</div>
 
-			<div className="border-t pt-6">
-				<h2 className="text-left text-xl text-blue-500">прогноз погоды</h2>
-
+			<div>
 				{selectedSettlement && (
-					<div className="mt-4 text-left text-sm">
+					<div className="text-left">
 						Выбранный город: <strong>{selectedSettlement.name}</strong>
 					</div>
 				)}
+				<ForecastWidget selectedSettlement={selectedSettlement} />
 			</div>
 		</div>
 	)

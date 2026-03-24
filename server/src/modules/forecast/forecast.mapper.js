@@ -11,6 +11,7 @@ export function mapForecastResponse(items, lat, lon) {
       temperature: safeItems.map((item) => item.temp_2_cel ?? null),
       precipitation: safeItems.map((item) => item.prate ?? null),
       windSpeed: safeItems.map((item) => item.wind_speed_10 ?? null),
+      weatherCondition: safeItems.map((item) => item.weather_condition ?? null),
     },
   };
 }
