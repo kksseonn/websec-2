@@ -36,7 +36,7 @@ export function SettlementMarkers({
 					{item.name}
 				</Tooltip>
 
-				<Popup className="map-popup" closeButton={false}>
+				<Popup className="map-popup" closeButton={false} autoPan={false}>
 					<div className="min-w-52.5 rounded-2xl">
 						<div className="text-base font-semibold text-slate-900">
 							{item.name}

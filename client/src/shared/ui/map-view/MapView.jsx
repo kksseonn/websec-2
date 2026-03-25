@@ -21,8 +21,6 @@ function MapCenterController({
 			return
 		}
 
-		const marker = markerRefs.current[selectedSettlement.id]
-
 		map.setView(
 			[selectedSettlement.lat, selectedSettlement.lon],
 			SELECTED_ZOOM,
@@ -30,6 +28,8 @@ function MapCenterController({
 		)
 
 		const timeoutId = setTimeout(() => {
+			const marker = markerRefs.current[selectedSettlement.id]
+
 			if (!marker) {
 				return
 			}
@@ -38,7 +38,11 @@ function MapCenterController({
 
 			if (clusterGroup?.zoomToShowLayer) {
 				clusterGroup.zoomToShowLayer(marker, () => {
-					marker.openPopup()
+					const currentMarker = markerRefs.current[selectedSettlement.id]
+
+					if (currentMarker) {
+						currentMarker.openPopup()
+					}
 				})
 				return
 			}

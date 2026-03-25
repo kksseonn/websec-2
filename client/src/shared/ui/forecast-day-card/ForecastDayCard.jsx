@@ -1,5 +1,5 @@
 import { Wind } from 'lucide-react'
-import { getWeatherIcon } from '@/features/forecast-load'
+import { getWeatherIcon } from '@/shared/lib'
 import { ForecastDayChart } from '@/shared/ui/forecast-day-chart'
 
 export function ForecastDayCard({ day }) {

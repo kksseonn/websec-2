@@ -1,10 +1,12 @@
 import {
+	BarController,
 	BarElement,
 	CategoryScale,
 	Chart as ChartJS,
 	Filler,
 	Legend,
 	LinearScale,
+	LineController,
 	LineElement,
 	PointElement,
 	Tooltip
@@ -14,6 +16,8 @@ import { Chart } from 'react-chartjs-2'
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
+	BarController,
+	LineController,
 	PointElement,
 	LineElement,
 	BarElement,
@@ -43,7 +47,7 @@ export function ForecastDayChart({ day }) {
 				tension: 0.35,
 				pointRadius: 0,
 				borderWidth: 2,
-				fill: true,
+				fill: 'start',
 				yAxisID: 'y'
 			},
 			{

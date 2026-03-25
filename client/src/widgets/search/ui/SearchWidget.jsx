@@ -1,7 +1,12 @@
 import { Search } from 'lucide-react'
+import { useEffect } from 'react'
 import { useSettlementSearch } from '@/features/settlement-search'
 
-export function SearchWidget({ onSelect }) {
+export function SearchWidget({
+	onSelect,
+	selectedSettlement,
+	selectionSource
+}) {
 	const {
 		query,
 		setQuery,
@@ -9,8 +14,17 @@ export function SearchWidget({ onSelect }) {
 		isLoading,
 		error,
 		isOpen,
-		selectSettlement
+		containerRef,
+		handleFocus,
+		selectSettlement,
+		clearSearch
 	} = useSettlementSearch()
+
+	useEffect(() => {
+		if (selectionSource === 'map' && selectedSettlement) {
+			clearSearch()
+		}
+	}, [selectionSource, selectedSettlement, clearSearch])
 
 	function handleSelect(item) {
 		onSelect?.(item)
@@ -18,13 +32,14 @@ export function SearchWidget({ onSelect }) {
 	}
 
 	return (
-		<div className="flex justify-end">
+		<div className="flex justify-end" ref={containerRef}>
 			<div className="relative w-full max-w-sm">
 				<div className="flex h-11 items-center rounded-full border border-slate-300 bg-white px-4 shadow-sm">
 					<input
 						type="text"
 						value={query}
 						onChange={(event) => setQuery(event.target.value)}
+						onFocus={handleFocus}
 						placeholder="Поиск населённого пункта"
 						className="flex-1 bg-transparent text-sm outline-none placeholder:text-slate-400"
 					/>

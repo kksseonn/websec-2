@@ -22,6 +22,14 @@ export function ForecastWidget({ selectedSettlement }) {
 		return <div className="pt-4 text-sm text-red-500">{error}</div>
 	}
 
+	if (!forecast.length) {
+		return (
+			<div className="pt-4 text-sm text-slate-500">
+				Прогноз для выбранного населённого пункта недоступен
+			</div>
+		)
+	}
+
 	return (
 		<section className="mx-auto pt-6">
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">

@@ -5,6 +5,17 @@ import { SearchWidget } from '@/widgets/search'
 
 export function HomePage() {
 	const [selectedSettlement, setSelectedSettlement] = useState(null)
+	const [selectionSource, setSelectionSource] = useState(null)
+
+	function handleSelectFromSearch(settlement) {
+		setSelectedSettlement(settlement)
+		setSelectionSource('search')
+	}
+
+	function handleSelectFromMap(settlement) {
+		setSelectedSettlement(settlement)
+		setSelectionSource('map')
+	}
 
 	return (
 		<div className="mx-auto flex max-w-6xl flex-col gap-6 p-6">
@@ -14,11 +25,15 @@ export function HomePage() {
 				Выберите населённый пункт на карте или используйте поиск
 			</p>
 
-			<SearchWidget onSelect={setSelectedSettlement} />
+			<SearchWidget
+				onSelect={handleSelectFromSearch}
+				selectedSettlement={selectedSettlement}
+				selectionSource={selectionSource}
+			/>
 
 			<MapWidget
 				selectedSettlement={selectedSettlement}
-				onSelectSettlement={setSelectedSettlement}
+				onSelectSettlement={handleSelectFromMap}
 			/>
 
 			{selectedSettlement && (
