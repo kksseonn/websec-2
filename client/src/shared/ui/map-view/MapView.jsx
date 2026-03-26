@@ -15,6 +15,7 @@ function MapCenterController({
 	clusterGroupRef
 }) {
 	const map = useMap()
+	map.attributionControl.setPrefix(false)
 
 	useEffect(() => {
 		if (!selectedSettlement) {
